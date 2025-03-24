@@ -40,6 +40,19 @@ namespace EmailSneder
                 MessageBox.Show("Please enter both email and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            if (db.Login(email, password))
+            {
+                MessageBox.Show("Login Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 Dashboard dashboard = new Dashboard();
+                dashboard.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

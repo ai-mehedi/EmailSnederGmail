@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 
@@ -58,7 +59,7 @@ namespace EmailSender
                     firstname TEXT NOT NULL,
                     lastname TEXT NOT NULL,
                     email TEXT UNIQUE NOT NULL,
-                    status TEXT CHECK(status IN ('sent', 'fail')) NOT NULL DEFAULT 'fail'
+                    status TEXT CHECK(status IN ('sent', 'fail','draft')) NOT NULL DEFAULT 'draft'
                 );
             ";
 
@@ -112,6 +113,73 @@ namespace EmailSender
             ExecuteReader("SELECT * FROM users");
         }
 
+
+        public DataTable GetSMTPsData()
+        {
+            string query = "SELECT * FROM smtp";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (var cmd = new SQLiteCommand(query, connection))
+                using (var adapter = new SQLiteDataAdapter(cmd))
+                {
+                    adapter.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+
+            }
+
+            return dt;
+        }
+        public DataTable GetEmailData()
+        {
+            string query = "SELECT * FROM email";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (var cmd = new SQLiteCommand(query, connection))
+                using (var adapter = new SQLiteDataAdapter(cmd))
+                {
+                    adapter.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+
+            }
+
+            return dt;
+        }
+        public DataTable GetmailbodyData()
+        {
+            string query = "SELECT * FROM message";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (var cmd = new SQLiteCommand(query, connection))
+                using (var adapter = new SQLiteDataAdapter(cmd))
+                {
+                    adapter.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+
+            }
+
+            return dt;
+        }
         public void GetSMTPs()
         {
             ExecuteReader("SELECT * FROM smtp");
@@ -147,6 +215,12 @@ namespace EmailSender
         public void UpdateEmail(int id, string firstname, string lastname, string email, string status)
         {
             ExecuteNonQuery("UPDATE email SET firstname = @firstname, lastname = @lastname, email = @email, status = @status WHERE id = @id", ("@id", id.ToString()), ("@firstname", firstname), ("@lastname", lastname), ("@email", email), ("@status", status));
+        }
+        public void UpdateEmailByEmailAndStatus(string email, string status)
+        {
+            ExecuteNonQuery("UPDATE email SET status = @status WHERE email = @email",
+                ("@email", email),
+                ("@status", status));
         }
 
         // DELETE Operations (Remove Data)

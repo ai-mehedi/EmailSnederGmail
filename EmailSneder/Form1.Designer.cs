@@ -66,7 +66,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(68, 345);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 25);
+            this.label2.Size = new System.Drawing.Size(157, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Register You Acount";
             // 
@@ -102,7 +102,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(44, 173);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 39);
+            this.label1.Size = new System.Drawing.Size(175, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Email Sender";
             // 
@@ -113,7 +113,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(307, 45);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(313, 39);
+            this.label3.Size = new System.Drawing.Size(250, 31);
             this.label3.TabIndex = 4;
             this.label3.Text = "Login Your Account";
             // 
@@ -123,7 +123,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(372, 141);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 25);
+            this.label4.Size = new System.Drawing.Size(83, 20);
             this.label4.TabIndex = 5;
             this.label4.Text = "Username";
             // 
@@ -142,7 +142,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(372, 233);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 25);
+            this.label5.Size = new System.Drawing.Size(78, 20);
             this.label5.TabIndex = 7;
             this.label5.Text = "Password";
             // 
@@ -151,7 +151,7 @@
             this.ShowPass.AutoSize = true;
             this.ShowPass.Location = new System.Drawing.Point(560, 307);
             this.ShowPass.Name = "ShowPass";
-            this.ShowPass.Size = new System.Drawing.Size(117, 19);
+            this.ShowPass.Size = new System.Drawing.Size(102, 17);
             this.ShowPass.TabIndex = 9;
             this.ShowPass.Text = "Show Password";
             this.ShowPass.UseVisualStyleBackColor = true;
