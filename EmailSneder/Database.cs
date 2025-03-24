@@ -69,6 +69,22 @@ namespace EmailSender
             }
         }
 
+
+        public bool Login(string email, string password)
+        {
+            string query = "SELECT COUNT(*) FROM users WHERE email = @email AND password = @password";
+
+            using (var cmd = new SQLiteCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@password", password); // plain-text, improve with hashing later
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                return count > 0; // If user exists, return true
+            }
+        }
+
         // INSERT Operations (Create)
         public void InsertUser(string email, string password)
         {
@@ -126,6 +142,7 @@ namespace EmailSender
         {
             ExecuteNonQuery("UPDATE message SET subject = @subject, body = @body, status = @status WHERE id = @id", ("@id", id.ToString()), ("@subject", subject), ("@body", body), ("@status", status));
         }
+   
 
         public void UpdateEmail(int id, string firstname, string lastname, string email, string status)
         {

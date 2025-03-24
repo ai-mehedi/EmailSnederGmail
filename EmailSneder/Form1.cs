@@ -28,9 +28,18 @@ namespace EmailSneder
 
         private void button2_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
-            registerForm.Show();
-            this.Hide();
+            string email = login_email.Text.Trim();
+            string password = login_pass.Text.Trim();
+
+
+
+
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both email and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,6 +47,11 @@ namespace EmailSneder
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
             this.Hide();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            login_pass.UseSystemPasswordChar = ShowPass.Checked;
         }
     }
 }
